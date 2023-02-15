@@ -1,4 +1,4 @@
-.post {
+.userItem {
     min-width: 300px;
     display: flex;
     padding: 15px;
@@ -9,7 +9,7 @@
     background: beige;
 }
 
-.post__content {
+.userItem__content {
     width: 100%;
     display: flex;
     justify-content: center;

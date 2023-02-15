@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import UserItem from "./userList/UserItem";
-import { useInView } from 'react-intersection-observer';
-import { motion } from 'framer-motion';
+import {useInView} from 'react-intersection-observer';
+import {motion} from 'framer-motion';
 
 
 export type UserType = { name: string, surname: string };
@@ -12,11 +12,11 @@ for (let i = 0; i < 100; i++) {
 }*/
 
 const names = ['John', 'Paul', 'George', 'Ringo', 'Pablo'];
-const subNames = ['Doe', 'Jansales', 'Nikolas', 'Kowalski',  'Escobar'];
-const arrUsers_: Array<UserType & {id: number}> = [...Array(100)].map((_, index) => ({
+const subNames = ['Doe', 'Hansales', 'Nikolas', 'Kowalski', 'Escobar'];
+const arrUsers_: Array<UserType & { id: number }> = [...Array(100)].map((_, index) => ({
     id: index + 1,
-    name: names[index % names.length ],
-    surname: subNames[index % subNames.length ],
+    name: names[index % names.length],
+    surname: subNames[index % subNames.length],
 }))
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
             if (index < 20) {
                 return <UserItem user={user} index={index}/>
             }
-            if (index >= 20 ) {
+            if (index >= 20 && index < offSet) {
                 return (
                     <motion.div
                         key={user.id}

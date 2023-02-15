@@ -5,8 +5,8 @@ import "./UserItem.css";
 function UserItem ({user, index}: {user: UserType, index: number}) {
 
     return (
-        <div className="post">
-            <div className="post__content">
+        <div className="userItem">
+            <div className="userItem__content">
                 <strong>{index+1}. {user.name} {user.surname}</strong>
             </div>
         </div>
