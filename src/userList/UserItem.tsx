@@ -2,7 +2,7 @@ import React from "react";
 import {UserType} from "../App";
 import "./UserItem.css";
 
-function UserItem ({user, index}: {user: UserType, index: number}) {
+export function UserItem ({user, index}: {user: UserType, index: number}) {
 
     return (
         <div className="userItem">
@@ -12,5 +12,3 @@ function UserItem ({user, index}: {user: UserType, index: number}) {
         </div>
     );
 }
-
-export default UserItem;

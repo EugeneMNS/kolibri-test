@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import UserItem from "./userList/UserItem";
+import {UserItem} from "./userList/UserItem";
 import {useInView} from 'react-intersection-observer';
-import {motion} from 'framer-motion';
+import {motion, Variants} from 'framer-motion';
 
 
 export type UserType = { name: string, surname: string };
@@ -19,6 +19,11 @@ const arrUsers_: Array<UserType & { id: number }> = [...Array(100)].map((_, inde
     surname: subNames[index % subNames.length],
 }))
 
+const itemVariants : Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+}
+
 function App() {
     const [offSet, setOffset] = useState(20)
 
@@ -28,19 +33,15 @@ function App() {
 
     useEffect(() => {
         if (inView) {
-            setOffset(offSet + 20)
+            setOffset( (prev) => prev + 20)
         }
     }, [inView]);
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
-    }
 
-
+    //arrUsers_.slice(0, offSet).map((user, index) => {
     return <>
-        {arrUsers_.map((user, index) => {
-            if (index < 20) {
+        {arrUsers_.slice(0, offSet).map((user, index) => {
+            /*if (index < 20) {
                 return <UserItem user={user} index={index}/>
             }
             if (index >= 20 && index < offSet) {
@@ -50,17 +51,39 @@ function App() {
                         variants={itemVariants}
                         initial="hidden"
                         animate="visible"
-                        transition={{ delay: index * 0.1 }}
+                        transition={{ delay: (index % 20) * 0.5 }}
                     >
                         <UserItem user={user} index={index}/>
                     </motion.div>
                 )
-            }
+            }*/
+            return <Wrapper index={index}>
+                <UserItem user={user} index={index}/>
+            </Wrapper>
         })}
         <div ref={ref}/>
 
 
     </>
+}
+
+type WrapperPropsType = {
+    children: React.ReactNode
+    index: number
+}
+const Wrapper = ({ children, index }: WrapperPropsType) => {
+    if (index<20) {
+        //return React.Children.only(children)
+        return <>{children}</>
+    }
+    return <motion.div
+        //key={user.id}
+        variants={itemVariants}
+        initial="hidden"
+        animate="visible"
+        transition={{ delay: (index % 20) * 0.3 }}
+    >{children}</motion.div>
+
 }
 
 export default App;
