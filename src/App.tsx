@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import UserItem from "./userList/UserItem";
 import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 
 
 export type UserType = { name: string, surname: string };
@@ -10,8 +11,8 @@ for (let i = 0; i < 100; i++) {
     arrUsers.push({name: `John`, surname: `Doe`});
 }*/
 
-const names = ['John', 'Paul', 'George', 'Ringo'];
-const subNames = ['Sub', 'Sub', 'Sub', 'Sub'];
+const names = ['John', 'Paul', 'George', 'Ringo', 'Pablo'];
+const subNames = ['Doe', 'Jansales', 'Nikolas', 'Kowalski',  'Escobar'];
 const arrUsers_: Array<UserType & {id: number}> = [...Array(100)].map((_, index) => ({
     id: index + 1,
     name: names[index % names.length ],
@@ -31,11 +32,29 @@ function App() {
         }
     }, [inView]);
 
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 },
+    }
+
 
     return <>
         {arrUsers_.map((user, index) => {
-            if (index < offSet) {
+            if (index < 20) {
                 return <UserItem user={user} index={index}/>
+            }
+            if (index >= 20 ) {
+                return (
+                    <motion.div
+                        key={user.id}
+                        variants={itemVariants}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ delay: index * 0.1 }}
+                    >
+                        <UserItem user={user} index={index}/>
+                    </motion.div>
+                )
             }
         })}
         <div ref={ref}/>
