@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/kolibri-test/static/css/main.40d92078.css",
+    "main.js": "/kolibri-test/static/js/main.4a19d0cc.js",
+    "static/js/787.87f470ce.chunk.js": "/kolibri-test/static/js/787.87f470ce.chunk.js",
+    "index.html": "/kolibri-test/index.html",
+    "main.40d92078.css.map": "/kolibri-test/static/css/main.40d92078.css.map",
+    "main.4a19d0cc.js.map": "/kolibri-test/static/js/main.4a19d0cc.js.map",
+    "787.87f470ce.chunk.js.map": "/kolibri-test/static/js/787.87f470ce.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.40d92078.css",
+    "static/js/main.4a19d0cc.js"
+  ]
+}
