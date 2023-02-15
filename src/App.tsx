@@ -21,25 +21,35 @@ const arrUsers_: Array<UserType & { id: number }> = [...Array(100)].map((_, inde
 
 function App() {
     const [offSet, setOffset] = useState(20)
-
+    const [disable, setDisable] = useState(false)
+    //console.log('disable => ', disable)
     const { ref, inView } = useInView({
-        threshold: 0.5,
+        threshold: 1,
+        onChange: (inView, entry) => {
+
+        }
     });
 
     useEffect(() => {
         if (inView) {
-            setOffset( (prev) => prev + 20)
+            setDisable(true)
+            if(disable) return
+            setOffset((prev) => prev + 20)
         }
     }, [inView]);
 
+    useEffect(() => {
+        if(disable) return
+        //setOffset((prev) => prev + 20)
+    }, [disable])
+    console.log('12313', arrUsers_.slice(0, offSet).length)
     return <>
         {arrUsers_.slice(0, offSet).map((user, index) => {
-            return <UserItemWrapper index={index}>
+            return <UserItemWrapper key={`UserItemWrapper.${index}`} index={index} setDisable={setDisable}>
                 <UserItem user={user} index={index}/>
             </UserItemWrapper>
         })}
-        <div ref={ref}/>
-
+        {!disable && <div ref={ref} style={{height: '100px', background: 'red'}}>Loading...</div>}
     </>
 }
 

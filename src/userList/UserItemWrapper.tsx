@@ -4,6 +4,7 @@ import {motion, Variants} from 'framer-motion';
 type WrapperPropsType = {
     children: React.ReactNode
     index: number
+    setDisable: (disabled: boolean) => void
 }
 
 const itemVariants: Variants = {
@@ -11,7 +12,7 @@ const itemVariants: Variants = {
     visible: {opacity: 1, y: 0},
 }
 
-export const UserItemWrapper = ({children, index}: WrapperPropsType) => {
+export const UserItemWrapper = ({children, index, setDisable}: WrapperPropsType) => {
     if (index < 20) {
         return <>{children}</>
     }
@@ -21,6 +22,13 @@ export const UserItemWrapper = ({children, index}: WrapperPropsType) => {
         initial="hidden"
         animate="visible"
         transition={{delay: (index % 20) * 0.3}}
+        onAnimationComplete={() => {
+            if (!(index % 20)) {
+                setDisable(false)
+                console.log(`animation complete setDisable(false)`)
+            }
+            //console.log(`animation complete ${index}`)
+        }}
     >{children}</motion.div>
 
 }
