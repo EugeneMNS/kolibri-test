@@ -1,25 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
+import UserItem from "./userList/UserItem";
 
-export type UserType = {name: string, surname: string};
+export type UserType = { name: string, surname: string };
 const arrUsers: UserType[] = [];
 for (let i = 0; i < 100; i++) {
-  arrUsers.push({name: `John`, surname: `Doe`});
+    arrUsers.push({name: `John`, surname: `Doe`});
 }
 
 
 function App() {
-  return <>
-  {arrUsers.map((user, index) => {
-        return (
-            <div className="post">
-              <div className="post__content">
-                <strong>{index + 1}. {user.name} {user.surname}</strong>
-              </div>
-              </div>
-        );
+    const [offSet, setOffset] = useState(20)
+
+    return <>
+        {arrUsers.map((user, index) => {
+            if (index < offSet) {
+                return <UserItem user={user} index={index}/>
+            }
         })}
-  </>
+        // создай невидимый элемент, который будет отслеживать, когда он появится в зоне видимости
+
+    </>
 }
 
 export default App;

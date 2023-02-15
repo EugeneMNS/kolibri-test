@@ -14,22 +14,7 @@
   width: 800px;
 }
 
-.post {
-  min-width: 300px;
-  display: flex;
-  padding: 15px;
-  border: 2px solid teal;
-  margin-top: 15px;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.post__content {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 
 
