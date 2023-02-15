@@ -11,8 +11,8 @@ for (let i = 0; i < 100; i++) {
     arrUsers.push({name: `John`, surname: `Doe`});
 }*/
 
-const names = ['John', 'Paul', 'George', 'Ringo', 'Pablo'];
-const subNames = ['Doe', 'Hansales', 'Nikolas', 'Kowalski', 'Escobar'];
+const names = ['John', 'Paul', 'George', 'Ringo', 'Rodrigo'];
+const subNames = ['Doe', 'Hansales', 'Nikolas', 'Kowalski', 'Petrov'];
 const arrUsers_: Array<UserType & { id: number }> = [...Array(100)].map((_, index) => ({
     id: index + 1,
     name: names[index % names.length],
@@ -39,7 +39,6 @@ function App() {
             </UserItemWrapper>
         })}
         <div ref={ref}/>
-
 
     </>
 }
