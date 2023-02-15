@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+export type UserType = {name: string, surname: string};
+const arrUsers: UserType[] = [];
+for (let i = 0; i < 100; i++) {
+  arrUsers.push({name: `John`, surname: `Doe`});
+}
+
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <>
+  {arrUsers.map((user, index) => {
+        return (
+            <div className="post">
+              <div className="post__content">
+                <strong>{index + 1}. {user.name} {user.surname}</strong>
+              </div>
+              </div>
+        );
+        })}
+  </>
 }
 
 export default App;
