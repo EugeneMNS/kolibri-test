@@ -32,26 +32,8 @@ function App() {
         }
     }, [inView]);
 
-
-    //arrUsers_.slice(0, offSet).map((user, index) => {
     return <>
         {arrUsers_.slice(0, offSet).map((user, index) => {
-            /*if (index < 20) {
-                return <UserItem user={user} index={index}/>
-            }
-            if (index >= 20 && index < offSet) {
-                return (
-                    <motion.div
-                        key={user.id}
-                        variants={itemVariants}
-                        initial="hidden"
-                        animate="visible"
-                        transition={{ delay: (index % 20) * 0.5 }}
-                    >
-                        <UserItem user={user} index={index}/>
-                    </motion.div>
-                )
-            }*/
             return <UserItemWrapper index={index}>
                 <UserItem user={user} index={index}/>
             </UserItemWrapper>

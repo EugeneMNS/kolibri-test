@@ -13,7 +13,6 @@ const itemVariants: Variants = {
 
 export const UserItemWrapper = ({children, index}: WrapperPropsType) => {
     if (index < 20) {
-        //return React.Children.only(children)
         return <>{children}</>
     }
     return <motion.div
