@@ -23,11 +23,9 @@ export const UserItemWrapper = ({children, index, setDisable}: WrapperPropsType)
         animate="visible"
         transition={{delay: (index % 20) * 0.3}}
         onAnimationComplete={() => {
-            if (!(index % 20)) {
+            if ((index + 1) % 20 === 0) {
                 setDisable(false)
-                console.log(`animation complete setDisable(false)`)
             }
-            //console.log(`animation complete ${index}`)
         }}
     >{children}</motion.div>
 
