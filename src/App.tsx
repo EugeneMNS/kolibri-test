@@ -37,7 +37,6 @@ function App() {
         }
     }, [inView, disable])
 
-    console.log('12313', arrUsers_.slice(0, offSet).length)
     return <>
         {arrUsers_.slice(0, offSet).map((user, index) => {
             return <UserItemWrapper key={`UserItemWrapper.${index}`} index={index} setDisable={setDisable}>
