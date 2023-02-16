@@ -6,9 +6,9 @@ export function UserItem ({user, index}: {user: UserType, index: number}) {
 
     return (
         <div className="userItem">
-            <div className="userItem__content">
-                <strong>{index+1}. {user.name} {user.surname}</strong>
-            </div>
+            <ul className="userItem__content">
+                <li>{index+1}. {user.name} {user.surname}</li>
+            </ul>
         </div>
     );
 }
