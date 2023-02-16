@@ -24,9 +24,6 @@ function App() {
     const [disable, setDisable] = useState(false)
     const { ref, inView } = useInView({
         threshold: 1,
-        onChange: (inView, entry) => {
-
-        }
     });
 
     useEffect(() => {
